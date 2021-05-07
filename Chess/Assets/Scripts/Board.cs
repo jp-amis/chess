@@ -14,10 +14,11 @@ public class Board
     
     public Board()
     {
+        string posStr = "";
         // Create Pawns Pieces
         for (int i = 0; i < 8; i++)
         {
-            string posStr = _columns[i] + "2";
+            posStr = _columns[i] + "2";
             Piece whitePawn = Piece.Create(Piece.Type.Pawn, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)); 
             _pieces.Add(posStr, whitePawn);
 
@@ -25,6 +26,26 @@ public class Board
             Piece blackPAwn = Piece.Create(Piece.Type.Pawn, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)); 
             _pieces.Add(posStr, blackPAwn);
         }
+        
+        posStr = "b1";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Knight, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)));
+        posStr = "g1";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Knight, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)));
+        
+        posStr = "b8";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Knight, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
+        posStr = "g8";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Knight, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
+        
+        posStr = "a1";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Rook, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)));
+        posStr = "h1";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Rook, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)));
+        
+        posStr = "a8";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Rook, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
+        posStr = "h8";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Rook, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
     }
 
     public void Move(string origin, string destination)
@@ -32,6 +53,13 @@ public class Board
         Piece originPiece = _pieces[origin];
         originPiece.SetPosition(destination);
         _pieces.Remove(origin);
+
+        if (_pieces.ContainsKey(destination))
+        {
+            Piece capturedPiece = _pieces[destination];
+            capturedPiece.Capture();
+            _pieces.Remove(destination);
+        }
         _pieces.Add(destination, originPiece);
     }
 
@@ -56,6 +84,16 @@ public class Board
 
     public static string GetPositionStr(Vector2Int pos)
     {
+        if (pos.x < 0 || pos.x > 7)
+        {
+            return null;
+        }
+
+        if (pos.y < 0 || pos.y > 7)
+        {
+            return null;
+        }
+        
         string posStr = _columns[pos.x] + "" + (pos.y + 1);
 
         return posStr;

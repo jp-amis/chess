@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Pawn : Piece
@@ -10,6 +11,7 @@ public class Pawn : Piece
 
     public override List<string> GetPossibleMovements()
     {
+        // Walk
         int tiles = 1;
         if (Color == PlayerColor.WHITE && Board.GetPositionStr(Pos).Contains("2"))
         {
@@ -44,6 +46,16 @@ public class Pawn : Piece
             }
         }
 
+        // Capture Movements
+        if (Color == PlayerColor.WHITE)
+        {
+            positions = positions.Concat(GetCaptureMovements(new List<Vector2Int>() {new Vector2Int(-1, 1), new Vector2Int(1, 1)})).ToList();
+        }
+        else if (Color == PlayerColor.BLACK)
+        {
+            positions = positions.Concat(GetCaptureMovements(new List<Vector2Int>() {new Vector2Int(-1, -1), new Vector2Int(1, -1)})).ToList();
+        }
+        
         return positions;
     }
 }

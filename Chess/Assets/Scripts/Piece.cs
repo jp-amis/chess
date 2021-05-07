@@ -33,6 +33,8 @@ public class Piece
     private GameObject _pieceGO;
     private BasePiece _basePiece;
 
+    private bool _isCaptured = false;
+
     public Piece(Type type, PlayerColor color, Vector2Int pos)
     {
         _type = type;
@@ -46,6 +48,12 @@ public class Piece
         InstantMove();
     }
 
+    public void Capture()
+    {
+        _pieceGO.SetActive(false);
+        _isCaptured = true;
+    }
+    
     public void InstantMove()
     {
         _pieceGO.transform.localPosition = new Vector3(_pos.x + 0.5f, _pos.y + 0.5f, -4);
@@ -61,12 +69,62 @@ public class Piece
     {
         throw new Exception("Not implemented");
     }
+    
+    public List<string> GetCaptureMovements(List<Vector2Int> positions)
+    {
+        List<string> captureMovements = new List<string>();
+
+        foreach (Vector2Int position in positions)
+        {
+            string boardPosition = Board.GetPositionStr(Pos + position);
+            if (boardPosition != null)
+            {
+                Piece piece = Game.GetInstance().CurrBoard.GetPieceInPosition(boardPosition);
+                if (piece != null && piece.Color != Color)
+                {
+                    captureMovements.Add(boardPosition);
+                }
+            }
+        }
+
+        return captureMovements;
+    }
+    
+    public List<string> CheckMovements(List<Vector2Int> positions)
+    {
+        List<string> captureMovements = new List<string>();
+
+        foreach (Vector2Int position in positions)
+        {
+            string boardPosition = Board.GetPositionStr(Pos + position);
+            if (boardPosition != null)
+            {
+                Piece piece = Game.GetInstance().CurrBoard.GetPieceInPosition(boardPosition);
+                if (piece == null || piece.Color != Color)
+                {
+                    captureMovements.Add(boardPosition);
+                }
+            }
+        }
+
+        return captureMovements;
+    }
 
     public static Piece Create(Type type, PlayerColor color, Vector2Int pos)
     {
         if (type == Type.Pawn)
         {
             return new Pawn(type, color, pos);
+        } 
+        
+        if (type == Type.Knight)
+        {
+            return new Knight(type, color, pos);
+        }
+        
+        if (type == Type.Rook)
+        {
+            return new Rook(type, color, pos);
         }
 
         throw new Exception("Invalid piece type");

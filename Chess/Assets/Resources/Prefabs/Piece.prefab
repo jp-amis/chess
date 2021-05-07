@@ -97,5 +97,9 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 8170780596490521350}
   _whiteSprites:
   - {fileID: 21300000, guid: 6c79158436bcc4759ace929de39ab0fd, type: 3}
+  - {fileID: 21300000, guid: 3ad55a10d4dea48ababa286796373a88, type: 3}
+  - {fileID: 21300000, guid: 7c6ef74e44e304d3ab1a5c60f16537b8, type: 3}
   _blackSprites:
   - {fileID: 21300000, guid: 17e0663e0d4be497eadf8eac6530b649, type: 3}
+  - {fileID: 21300000, guid: 080464e3065fa4ddea7d2ea5d5bad312, type: 3}
+  - {fileID: 21300000, guid: e638b8d4c4fe24d05b6f3b33877edaa8, type: 3}
