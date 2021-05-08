@@ -18,13 +18,13 @@ public class Board
         // Create Pawns Pieces
         for (int i = 0; i < 8; i++)
         {
-            posStr = _columns[i] + "2";
-            Piece whitePawn = Piece.Create(Piece.Type.Pawn, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)); 
-            _pieces.Add(posStr, whitePawn);
-
-            posStr = _columns[i] + "7";
-            Piece blackPAwn = Piece.Create(Piece.Type.Pawn, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)); 
-            _pieces.Add(posStr, blackPAwn);
+            // posStr = _columns[i] + "2";
+            // Piece whitePawn = Piece.Create(Piece.Type.Pawn, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)); 
+            // _pieces.Add(posStr, whitePawn);
+            //
+            // posStr = _columns[i] + "7";
+            // Piece blackPAwn = Piece.Create(Piece.Type.Pawn, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)); 
+            // _pieces.Add(posStr, blackPAwn);
         }
         
         posStr = "b1";
@@ -46,6 +46,28 @@ public class Board
         _pieces.Add(posStr, Piece.Create(Piece.Type.Rook, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
         posStr = "h8";
         _pieces.Add(posStr, Piece.Create(Piece.Type.Rook, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
+        
+        posStr = "c1";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Bishop, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)));
+        posStr = "f1";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Bishop, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)));
+        
+        posStr = "c8";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Bishop, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
+        posStr = "f8";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Bishop, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
+        
+        posStr = "d1";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Queen, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)));
+        
+        posStr = "d8";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.Queen, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
+        
+        posStr = "e1";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.King, Piece.PlayerColor.WHITE, Board.GetPosition(posStr)));
+        
+        posStr = "e8";
+        _pieces.Add(posStr, Piece.Create(Piece.Type.King, Piece.PlayerColor.BLACK, Board.GetPosition(posStr)));
     }
 
     public void Move(string origin, string destination)

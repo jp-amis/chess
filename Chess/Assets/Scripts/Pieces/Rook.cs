@@ -9,17 +9,6 @@ public class Rook : Piece
 
     public override List<string> GetPossibleMovements()
     {
-        List<string> positions = CheckMovements(new List<Vector2Int>()
-        {
-            new Vector2Int(-2, 1),
-            new Vector2Int(-2, -1),
-            new Vector2Int(2, 1),
-            new Vector2Int(2, -1),
-            new Vector2Int(1, 2),
-            new Vector2Int(-1, 2),
-            new Vector2Int(1, -2),
-            new Vector2Int(-1, -2),
-        });
-        return positions;
+        return GetLinearPositions();
     }
 }

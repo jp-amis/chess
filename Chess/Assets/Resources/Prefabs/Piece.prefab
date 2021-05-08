@@ -99,7 +99,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6c79158436bcc4759ace929de39ab0fd, type: 3}
   - {fileID: 21300000, guid: 3ad55a10d4dea48ababa286796373a88, type: 3}
   - {fileID: 21300000, guid: 7c6ef74e44e304d3ab1a5c60f16537b8, type: 3}
+  - {fileID: 21300000, guid: c34a068494cf84d899c05f13314d5d10, type: 3}
+  - {fileID: 21300000, guid: c1fae4bf4402a49528a87d4dfaa441a1, type: 3}
+  - {fileID: 21300000, guid: 7e1dfa819e43c49ce9ff9320999929c7, type: 3}
   _blackSprites:
   - {fileID: 21300000, guid: 17e0663e0d4be497eadf8eac6530b649, type: 3}
   - {fileID: 21300000, guid: 080464e3065fa4ddea7d2ea5d5bad312, type: 3}
   - {fileID: 21300000, guid: e638b8d4c4fe24d05b6f3b33877edaa8, type: 3}
+  - {fileID: 21300000, guid: 49a24e75ebff54e67be879c0a94064d4, type: 3}
+  - {fileID: 21300000, guid: ecc4bf517fa0b4045baa7568bdb53ba0, type: 3}
+  - {fileID: 21300000, guid: 24135e1b018494368871acf23b991594, type: 3}
